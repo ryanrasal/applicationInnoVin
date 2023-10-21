@@ -1,43 +1,46 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import ModalDeleteUser from './ModalDeleteUser';
+import { MaterialIcons } from '@expo/vector-icons';
+import ModalUpdateWine from './ModalWineUpdate';
 
-export default function InformationUser({
-  userDetails,
+export const InformationWine = ({
+  wineDetails,
   toggleModalVisible,
   modalVisible,
-  userProfil,
-  handleDelete,
-}) {
+  handleChange,
+  updateDataWine,
+  submitUpdateWine,
+}) => {
   return (
-    <>
-      {userDetails.map((user, index) => (
+    <View>
+      {wineDetails.map((wine, index) => (
         <View key={index}>
-          <View style={styles.viewUser}>
-            <MaterialCommunityIcons name={user.iconName} size={24} color="black" />
+          <View style={styles.viewWine}>
+            <MaterialIcons name={wine.iconName} size={24} color="black" />
             <Text style={{ marginLeft: 5 }}>
-              {user.label}: {user.value}
+              {wine.label}: {wine.value}
             </Text>
           </View>
           <View style={styles.hr} />
         </View>
       ))}
       <TouchableOpacity style={styles.button} onPress={toggleModalVisible}>
-        <Text style={{ color: 'white', textAlign: 'center' }}>Supprimer</Text>
+        <Text style={{ color: 'white', textAlign: 'center' }}>Modifier</Text>
       </TouchableOpacity>
-      <ModalDeleteUser
+      <ModalUpdateWine
+        wineDetails={wineDetails}
         toggleModalVisible={toggleModalVisible}
         modalVisible={modalVisible}
-        user={userProfil}
-        handleDelete={handleDelete}
+        handleChange={handleChange}
+        updateDataWine={updateDataWine}
+        submitUpdateWine={submitUpdateWine}
       />
-    </>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  viewUser: { flexDirection: 'row', alignItems: 'center', marginLeft: 10, marginBottom: 5 },
+  viewWine: { flexDirection: 'row', alignItems: 'center', marginLeft: 10, marginBottom: 5 },
   hr: {
     borderBottomWidth: 1,
     width: '100%',

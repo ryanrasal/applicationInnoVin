@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import InformationUser from '../components/UserProfil/InformationUser';
 import HeaderUserProfil from '../components/UserProfil/HeaderUserProfil';
 

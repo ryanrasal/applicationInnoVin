@@ -3,13 +3,20 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Users from '../pages/Users';
 import UserProfil from '../pages/UserProfil';
+import Wines from '../pages/Wines';
+import { WineProfil } from '../pages/WineProfil';
 
 export default function BottomNav() {
   const Tab = createBottomTabNavigator();
   const [reloadUsers, setReloadUser] = useState(false);
+  const [reloadWines, setReloadWines] = useState(false);
 
   const toggleReloadUsers = () => {
     setReloadUser(!reloadUsers);
+  };
+
+  const toggleReloadWines = () => {
+    setReloadWines(!reloadWines);
   };
 
   return (
@@ -37,8 +44,8 @@ export default function BottomNav() {
 
           if (route.name == 'users') {
             iconName = 'account-outline';
-          } else if (route.name == 'Wines') {
-            iconName = 'wine-glass';
+          } else if (route.name == 'wines') {
+            iconName = 'glass-wine';
           }
           if (iconName) {
             return <MaterialCommunityIcons name={iconName} size={28} color={color} />;
@@ -59,6 +66,18 @@ export default function BottomNav() {
         component={UserProfil}
         options={{ tabBarButton: () => null }}
         initialParams={{ toggleReloadUsers }}
+      />
+      <Tab.Screen
+        name="wines"
+        options={{ headerShown: false }}
+        component={Wines}
+        initialParams={{ reloadWines }}
+      />
+      <Tab.Screen
+        name="wineProfil"
+        component={WineProfil}
+        options={{ tabBarButton: () => null }}
+        initialParams={{ toggleReloadWines }}
       />
       {/* <Tab.Screen name="Progress" options={{ headerShown: false }} component={Progress} /> */}
     </Tab.Navigator>

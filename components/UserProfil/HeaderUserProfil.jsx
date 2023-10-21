@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function HeaderUserProfil({ navigation, toggleValue, toggleMenu }) {
   return (
-    <View>
+    <>
       <MaterialCommunityIcons
         name="arrow-left-bold-circle-outline"
         size={40}
@@ -22,7 +22,7 @@ export default function HeaderUserProfil({ navigation, toggleValue, toggleMenu }
           <Text style={{ fontSize: 18, marginHorizontal: 20 }}>Commandes</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </>
   );
 }
 
